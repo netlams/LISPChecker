@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Running LISP Unit Tests");
 
-        Result result = J:UnitCore.runClasses(UnitTest.class);
+        Result result = JUnitCore.runClasses(UnitTest.class);
         if (result.wasSuccessful())
             System.out.println("All tests passed");
         for (Failure failure : result.getFailures()) {
