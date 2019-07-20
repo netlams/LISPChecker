@@ -1,7 +1,7 @@
 import java.util.Stack;
 
 /**
- *  LISPChecker validates validates the parentheses of a LISP code
+ *  LISPChecker validates the parentheses of a LISP code
  *
  * @author Dau Lam
  * @Date 07/17/2019
@@ -20,7 +20,8 @@ public class LISPChecker {
         Stack<Integer> stackOfParentheses = new Stack<>();
         char[] chrArray = statement.toCharArray();
 
-        // Loop and compare each character for opening or closing parenthesis, record each parenthesis set in a stack
+        // Loop and compare each character for opening or closing parenthesis,
+        // record each parenthesis pair in a stack data structure
         for (int i = 0; i < chrArray.length; i++)
         {
             if (chrArray[i] == opening)
@@ -30,14 +31,14 @@ public class LISPChecker {
                 if (stackOfParentheses.size() > 0)
                     stackOfParentheses.pop();
                 else
-                    return false;
+                    return false; // found closing parenthesis, before an opening parentheis, bad LISP syntax
             }
         }
         // all nested parentheses should be closed by now
         if (stackOfParentheses.size() == 0)
             return true;
 
-        // Invalid format
+        // some parentheses are unclosed, bad LISP syntax
         return false;
     }
 }
